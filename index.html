@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meine Startseite</title>
+  <style>
+    :root {
+      --text: #f7f7fb;
+      --muted: rgba(247, 247, 251, 0.72);
+      --card: rgba(18, 20, 28, 0.54);
+      --card-hover: rgba(28, 31, 43, 0.72);
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: rgba(0, 0, 0, 0.35);
+      --accent: #8ab4ff;
+      --accent-2: #c084fc;
+      --blur: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background: #10131d;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: background-image 900ms ease-in-out;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(138, 180, 255, 0.32), transparent 35%),
+        radial-gradient(circle at 82% 18%, rgba(192, 132, 252, 0.28), transparent 34%),
+        radial-gradient(circle at 50% 90%, rgba(20, 184, 166, 0.18), transparent 38%),
+        linear-gradient(180deg, rgba(8, 10, 18, 0.22), rgba(8, 10, 18, 0.78));
+      backdrop-filter: blur(1px);
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 52px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.10);
+      box-shadow: 0 18px 55px var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      font-size: 22px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .brand p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .clock-card {
+      min-width: 172px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 18px 55px var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      text-align: right;
+    }
+
+    .clock {
+      font-size: 30px;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+    }
+
+    .date {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero {
+      display: grid;
+      place-items: center;
+      margin-bottom: 36px;
+    }
+
+    .search-box {
+      width: min(720px, 100%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 75px rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(var(--blur));
+    }
+
+    .search-box span {
+      font-size: 20px;
+      opacity: 0.85;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .search-box input::placeholder {
+      color: rgba(247, 247, 251, 0.58);
+    }
+
+    .quick-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .quick-actions button {
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 13px;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(var(--blur));
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .quick-actions button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 30px 0 16px;
+      color: rgba(247, 247, 251, 0.82);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .folder {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: 0 22px 70px var(--shadow);
+      backdrop-filter: blur(var(--blur));
+      overflow: hidden;
+    }
+
+    .folder-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 18px 10px;
+    }
+
+    .folder-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+    }
+
+    .folder-count {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .links {
+      display: grid;
+      gap: 8px;
+      padding: 10px 12px 14px;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-height: 50px;
+      padding: 10px;
+      border-radius: 18px;
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 150ms ease, background 150ms ease;
+    }
+
+    .link:hover {
+      transform: translateY(-2px);
+      background: var(--card-hover);
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 32px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(138,180,255,0.28), rgba(192,132,252,0.22));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 17px;
+    }
+
+    .link-text {
+      min-width: 0;
+    }
+
+    .link-text strong {
+      display: block;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .link-text small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    footer {
+      margin-top: 34px;
+      color: rgba(247, 247, 251, 0.58);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .wrap {
+        width: min(100% - 22px, 1180px);
+        padding-top: 22px;
+      }
+
+      header {
+        align-items: flex-start;
+        margin-bottom: 34px;
+      }
+
+      .brand p {
+        display: none;
+      }
+
+      .clock-card {
+        min-width: auto;
+        padding: 11px 13px;
+        border-radius: 18px;
+      }
+
+      .clock {
+        font-size: 22px;
+      }
+
+      .date {
+        display: none;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <main class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">⌁</div>
+        <div>
+          <h1>Start</h1>
+          <p>Deine persönliche New-Tab-Seite</p>
+        </div>
+      </div>
+
+      <div class="clock-card">
+        <div class="clock" id="clock">--:--</div>
+        <div class="date" id="date">Heute</div>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Suche">
+      <form class="search-box" id="searchForm">
+        <span>⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Suchen oder URL eingeben…" />
+      </form>
+      <div class="quick-actions">
+        <button type="button" data-search="site:reddit.com ">Reddit</button>
+        <button type="button" data-search="site:youtube.com ">YouTube</button>
+        <button type="button" data-search="site:github.com ">GitHub</button>
+        <button type="button" data-search="">Web</button>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <span>Ordner</span>
+      <span>Bearbeiten: Links im HTML ändern</span>
+    </div>
+
+    <section class="grid" id="folders"></section>
+
+    <footer>
+      Tipp: Du kannst diese Seite als Browser-Startseite oder New-Tab-URL verwenden.
+    </footer>
+  </main>
+
+  <script>
+    const folders = [
+      {
+        title: "AI",
+        emoji: "✦",
+        links: [
+          ["ChatGPT", "https://chatgpt.com", "chatgpt.com", "🤖"],
+          ["Claude", "https://claude.ai", "claude.ai", "🧠"],
+          ["Perplexity", "https://www.perplexity.ai", "perplexity.ai", "🔎"],
+          ["Gemini", "https://gemini.google.com", "gemini.google.com", "✨"]
+        ]
+      },
+      {
+        title: "Arbeit",
+        emoji: "◈",
+        links: [
+          ["Gmail", "https://mail.google.com", "mail.google.com", "✉️"],
+          ["Google Drive", "https://drive.google.com", "drive.google.com", "📁"],
+          ["Calendar", "https://calendar.google.com", "calendar.google.com", "📅"],
+          ["Notion", "https://www.notion.so", "notion.so", "📝"]
+        ]
+      },
+      {
+        title: "Dev",
+        emoji: "⌘",
+        links: [
+          ["GitHub", "https://github.com", "github.com", "🐙"],
+          ["Stack Overflow", "https://stackoverflow.com", "stackoverflow.com", "💬"],
+          ["MDN", "https://developer.mozilla.org", "developer.mozilla.org", "📚"],
+          ["CodePen", "https://codepen.io", "codepen.io", "🧪"]
+        ]
+      },
+      {
+        title: "Medien",
+        emoji: "▣",
+        links: [
+          ["YouTube", "https://youtube.com", "youtube.com", "▶️"],
+          ["Spotify", "https://open.spotify.com", "spotify.com", "🎧"],
+          ["Netflix", "https://netflix.com", "netflix.com", "🎬"],
+          ["Twitch", "https://twitch.tv", "twitch.tv", "🟣"]
+        ]
+      },
+      {
+        title: "Shopping",
+        emoji: "◇",
+        links: [
+          ["Amazon", "https://amazon.de", "amazon.de", "📦"],
+          ["eBay", "https://ebay.de", "ebay.de", "🛒"],
+          ["Idealo", "https://idealo.de", "idealo.de", "🏷️"],
+          ["Kleinanzeigen", "https://www.kleinanzeigen.de", "kleinanzeigen.de", "🔁"]
+        ]
+      },
+      {
+        title: "News",
+        emoji: "◌",
+        links: [
+          ["Tagesschau", "https://tagesschau.de", "tagesschau.de", "📰"],
+          ["Heise", "https://heise.de", "heise.de", "💻"],
+          ["Spiegel", "https://spiegel.de", "spiegel.de", "🗞️"],
+          ["Zeit", "https://zeit.de", "zeit.de", "☕"]
+        ]
+      }
+    ];
+
+    const backgrounds = [
+      "linear-gradient(135deg, #0f172a, #1e1b4b 46%, #312e81)",
+      "linear-gradient(135deg, #111827, #064e3b 48%, #0f766e)",
+      "linear-gradient(135deg, #18181b, #581c87 50%, #7c2d12)",
+      "linear-gradient(135deg, #020617, #172554 45%, #334155)",
+      "linear-gradient(135deg, #0c0a09, #3f1d2d 45%, #4c1d95)"
+    ];
+
+    function setBackground() {
+      const day = Math.floor(Date.now() / 86400000);
+      const bg = backgrounds[day % backgrounds.length];
+      document.body.style.setProperty("--bg-image", bg);
+    }
+
+    function renderFolders() {
+      const root = document.getElementById("folders");
+      root.innerHTML = folders.map(folder => `
+        <article class="folder">
+          <div class="folder-head">
+            <div class="folder-title"><span>${folder.emoji}</span><span>${folder.title}</span></div>
+            <div class="folder-count">${folder.links.length}</div>
+          </div>
+          <div class="links">
+            ${folder.links.map(([name, url, desc, icon]) => `
+              <a class="link" href="${url}">
+                <span class="icon">${icon}</span>
+                <span class="link-text">
+                  <strong>${name}</strong>
+                  <small>${desc}</small>
+                </span>
+              </a>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").textContent = now.toLocaleTimeString("de-DE", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+      document.getElementById("date").textContent = now.toLocaleDateString("de-DE", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long"
+      });
+    }
+
+    function isLikelyUrl(value) {
+      return value.includes(".") && !value.includes(" ");
+    }
+
+    document.getElementById("searchForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const value = document.getElementById("searchInput").value.trim();
+      if (!value) return;
+
+      if (isLikelyUrl(value)) {
+        const target = value.startsWith("http") ? value : `https://${value}`;
+        window.location.href = target;
+      } else {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
+      }
+    });
+
+    document.querySelectorAll(".quick-actions button").forEach(button => {
+      button.addEventListener("click", () => {
+        const input = document.getElementById("searchInput");
+        input.value = button.dataset.search;
+        input.focus();
+      });
+    });
+
+    setBackground();
+    renderFolders();
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
