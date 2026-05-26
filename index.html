@@ -55,6 +55,28 @@
       backdrop-filter: blur(1px);
     }
 
+    .reload-btn {
+      position: fixed;
+    top: 26px;
+  right: 26px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.10);
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+  backdrop-filter: blur(var(--blur));
+  box-shadow: 0 18px 55px var(--shadow);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.reload-btn:hover {
+  transform: rotate(90deg) scale(1.05);
+  background: rgba(255,255,255,0.18);
+}
+
     .grain {
       position: fixed;
       inset: 0;
@@ -488,7 +510,7 @@
       }
 
     ];
-
+       
     const backgrounds = [
       "linear-gradient(135deg, #0f172a, #1e1b4b 46%, #312e81)",
       "linear-gradient(135deg, #111827, #064e3b 48%, #0f766e)",
