@@ -1,0 +1,34 @@
+# Shell & Scripting
+*.zshrc         text
+*.zsh           text
+*.fish          text 
+*.sh            text 
+*.php           text diff=php
+*.applescript   text
+*.scpt          binary
+
+# Konfigurationsdateien (Allgemein)
+*.toml          text 
+*.json          text 
+*.conf          text 
+*.xml           text 
+ini             text 
+mc.ext          text 
+
+# macOS Spezifisch (Plists, Workflows & Geeklets)
+# Wir erzwingen 'text' für Diffs, auch wenn die Quelldatei binär ist
+*.plist         text diff=plist 
+*.wflow         text diff=plist
+*.ccctask       text diff=plist 
+*.glet          text diff=plist
+
+# App-Spezifische Formate (Typinator, A Better Finder Rename)
+*.tyset         text diff=plist 
+*.abr12         text diff=plist 
+
+# Binär-Assets & Bundles
+*.app           binary
+*.droplet       binary
+*.png           binary
+*.jpg           binary
+*.pdf           binary 

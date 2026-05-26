@@ -1,0 +1,49 @@
+# macOS Systemdateien
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Nur lokale symlinks und dateien
+"_iCloud Skripte"
+
+# [cite_start]Logs und temporäre Dateien [cite: 2]
+[cite_start]*.log [cite: 2]
+*.tmp
+*.bak
+
+# Sensible Daten (Wichtig für Terminal-Nutzer!)
+.fish_history
+.zsh_history
+.bash_history
+[cite_start].env [cite: 2]
+.node_repl_history
+
+# Caches & Temporäres (Wichtig, um das Repo schnell zu halten)
+**/Caches/*
+**/Cache/*
+**/CachedData/*
+**/Logs/*
+*.tmp
+*.bak
+
+"Artefakte" (Dinge, die automatisch generiert werden)
+bin/
+
+# Skripte als .app
+app/
+
+# Spezifische App-Daten (Beispiele)
+.iterm2_history
+.python_history
+.zsh_history
+
+# PHP & Web (für dein eBook-Projekt)
+vendor/
+.phpunit.result.cache
+.env
+
+
+# Lokale backups mit VSCode
+.history/
+
