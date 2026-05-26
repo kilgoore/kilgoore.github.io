@@ -29,6 +29,7 @@ Icon?
 
 "Artefakte" (Dinge, die automatisch generiert werden)
 bin/
+backup/
 
 # Skripte als .app
 app/
