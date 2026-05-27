@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kilgoore Startseite</title>
+  <meta id="wallpaper-name" content="wall-online.jpg">
+  <title>kilgoore's launchpad</title>
   <style>
     :root {
       --text: #f7f7fb;
@@ -376,7 +377,7 @@
         <div class="logo">⌁</div>
         <div>
           <h1>kilgoore / Start</h1>
-            <span id="last-update">2026.05.27 20:36</span>
+            <span id="last-update">2026.05.27 21:02</span>
         </div>
       </div>
 
@@ -523,19 +524,16 @@
 
     ];
        
-    const backgrounds = [
-      "linear-gradient(135deg, #0f172a, #1e1b4b 46%, #312e81)",
-      "linear-gradient(135deg, #111827, #064e3b 48%, #0f766e)",
-      "linear-gradient(135deg, #18181b, #581c87 50%, #7c2d12)",
-      "linear-gradient(135deg, #020617, #172554 45%, #334155)",
-      "linear-gradient(135deg, #0c0a09, #3f1d2d 45%, #4c1d95)"
-    ];
+function setBackground() {
+  const wallpaper =
+    document.getElementById("wallpaper-name")
+      .getAttribute("content");
 
-    function setBackground() {
-      const day = Math.floor(Date.now() / 86400000);
-      const bg = backgrounds[day % backgrounds.length];
-      document.body.style.setProperty("--bg-image", bg);
-    }
+  document.body.style.setProperty(
+    "--bg-image",
+    `url('wallpapers/${wallpaper}')`
+  );
+}
 
     function renderFolders() {
       const root = document.getElementById("folders");
