@@ -263,6 +263,32 @@
       font-size: 12px;
     }
 
+.folder-local {
+  border: 1px solid rgba(74, 222, 128, 0.55);
+  background: rgba(20, 83, 45, 0.42);
+}
+
+.folder-local .folder-head {
+  background: linear-gradient(
+    90deg,
+    rgba(74, 222, 128, 0.18),
+    transparent
+  );
+}
+
+.folder-local .folder-title::after {
+  content: "LOCAL";
+  margin-left: 8px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  background: rgba(74, 222, 128, 0.22);
+  color: #bbf7d0;
+}
+
+
+
     .links {
       display: grid;
       gap: 8px;
@@ -377,7 +403,7 @@
         <div class="logo">⌁</div>
         <div>
           <h1>kilgoore's launchpad</h1>
-            <span id="last-update">2026.05.27 21:12</span>
+            <span id="last-update">2026.05.28 00:21</span>
         </div>
       </div>
 
@@ -523,6 +549,10 @@
       }
 
     ];
+    
+    // LOCAL_FOLDERS_START
+    // LOCAL_FOLDERS_END
+
        
 function setBackground() {
   const wallpaper =
@@ -538,7 +568,7 @@ function setBackground() {
     function renderFolders() {
       const root = document.getElementById("folders");
       root.innerHTML = folders.map(folder => `
-        <article class="folder">
+        <article class="folder ${folder.local ? 'folder-local' : ''}">
           <div class="folder-head">
             <div class="folder-title"><span>${folder.emoji}</span><span>${folder.title}</span></div>
             <div class="folder-count">${folder.links.length}</div>
