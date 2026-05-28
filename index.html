@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta id="wallpaper-name" content="wall-online.jpg">
-  <title>kilgoore's launchpad</title>
+  
   <style>
     :root {
       --text: #f7f7fb;
@@ -402,8 +402,8 @@
       <div class="brand">
         <div class="logo">⌁</div>
         <div>
-          <h1>kilgoore's launchpad</h1>
-            <span id="last-update">2026.05.28 12:42</span>
+            <h1>kilgoore's launchpad</h1>
+            <span id="last-update">2026.05.28 17:05</span>
         </div>
       </div>
 
@@ -441,117 +441,129 @@
   </main>
 
   <script>
-    const folders = [
-     {
-        title: "Tools",
-        emoji: "◌",
-        links: [
-          ["DeepL", "https://www.deepl.com/de/translator", "deepl.com", "📰"],
-          ["LlanguageTool.org", "hhttps://languagetool.org/editor/new", "languagetool.org/", "🗞️"],
-          ["Google Übersetzer", "https://translate.google.de/?hl=de&tab=wT&sl=de&tl=en&op=translate", "Google Übersetzer", "☕"]
-        ]
-      },
+    const folders = [];
 
-     {
-        title: "Office",
-        emoji: "◌",
-        links: [
-          ["DeepL", "https://www.deepl.com/de/translator", "deepl.com", "📰"],
-          ["LlanguageTool.org", "hhttps://languagetool.org/editor/new", "languagetool.org/", "🗞️"],
-          ["Google Übersetzer", "https://translate.google.de/?hl=de&tab=wT&sl=de&tl=en&op=translate", "Google Übersetzer", "☕"]
-        ]
-      },
+    // FOLDERS_START
+
+folders.push({
+  title: "TOOLS",
+  emoji: "◌",
+  local: false,
+  links: [
+    ["DeepL", "https://www.deepl.com/de/translator", "deepl.com", "📡"],
+    ["LanguageTool.org", "ttps://languagetool.org/editor/new", "languagetool.org", "🗄️"],
+    ["Google Übersetzer", "https://translate.google.de/?hl=de&tab=wT&sl=de&tl=en&op=translate\"", "Google Übersetzer", "📡"],
+    ["GitHub", "https://github.com", "github.com", "🐙"]
+  ]
+});
 
 
-      {
-        title: "Facts",
-        emoji: "◌",
-        links: [
-          ["Tagesschau", "https://tagesschau.de", "tagesschau.de", "📰"],
-          ["Sciencealert", "https://www.sciencealert.com/", "www.sciencealert.com/", "🗞️"],
-          ["Zeit", "https://zeit.de", "zeit.de", "☕"]
-        ]
-      },
-    
-      {
-        title: "mac & pc",
-        emoji: "🖥️",
-        links: [
-          ["Heise", "https://heise.de", "heise.de", "💻"],
-          ["Heise", "https://heise.de", "heise.de", "💻"],
-          ["Heise", "https://heise.de", "heise.de", "💻"],
-          ["Heise", "https://heise.de", "heise.de", "💻"]
-        ]
-      },
-        
-      {
-        title: "10xAI",
-        emoji: "✦",
-        links: [
-            ["Gemini", "https://gemini.google.com", "gemini.google.com", "✨"],            
-            ["MS Copilot", "https://copilot.microsoft.com/", "https://copilot.microsoft.com/", "👩🏻‍✈️"],      
-            ["ChatGPT", "https://chatgpt.com", "chatgpt.com", "🤖"],
-            ["Claude", "https://claude.ai", "claude.ai", "🧠"],
-            ["Perplexity", "https://www.perplexity.ai", "perplexity.ai", "🔎"],
-            ["NotebookLM", "  https://notebooklm.google.com/", "notebookLM", "🗒️"]
-        ]
-      },
-      {
-        title: "Google",
-        emoji: "◈",
-        links: [
-          ["Calendar", "https://calendar.google.com", "calendar.google.com", "📅"],
-          ["Gmail", "https://mail.google.com", "mail.google.com", "✉️"],
-          ["Google Drive", "https://drive.google.com", "drive.google.com", "📁"],
-          ["GoogleAccounts", "https://accounts.google.com/AccountChooser", "accounts.google.com", "🤓"]
-        ]
-      },
-      
-      {
-        title: "Dev",
-        emoji: "⌘",
-        links: [
-          ["GitHub", "https://github.com", "github.com", "🐙"] 
-        ]
-      },
-      
-      {
-        title: "Medien",
-        emoji: "▣",
-        links: [
-          ["YouTube", "https://youtube.com", "youtube.com", "▶️"],
-          ["Netflix", "https://netflix.com", "netflix.com", "🎬"],
-          ["waiputv", "h https://auth.waipu.tv/ui/login", "waipu.tv", "📺"],
-          ["Spotify", "https://open.spotify.com", "spotify.com", "🎧"]
-        ]
-      },
-      
-      {
-        title: "Shopping",
-        emoji: "◇",
-        links: [
-          ["Amazon", "https://amazon.de", "amazon.de", "📦"],
-          ["eBay", "https://ebay.de", "ebay.de", "🛒"],
-          ["Idealo", "https://idealo.de", "idealo.de", "🏷️"],
-          ["Kleinanzeigen", "https://www.kleinanzeigen.de", "kleinanzeigen.de", "🔁"]
-        ]
-      },
+folders.push({
+  title: "10xAI",
+  emoji: "🤖",
+  local: false,
+  links: [
+    ["Gemini", "https://gemini.google.com", "gemini.google.com", "✨"],
+    ["ChatGPT", "https://chatgpt.com", "chatgpt.com", "🤖"],
+    ["Claude", "https://claude.ai", "claude.ai", "🧠"],
+    ["MS Copilot", "https://copilot.microsoft.com/", "https://copilot.microsoft.com/", "👩🏻‍✈️"],
+    ["Perplexity", "https://www.perplexity.ai", "perplexity.ai", "🔎"],
+    ["NotebookLM", "https://notebooklm.google.com/", "notebookLM", "🗒️"]
+  ]
+});
 
-      {
-        title: "JOE",
-        emoji: "🤡",
-        links: [
-          ["9gag", "https://9gag.com/interest/news", "9gag.com", "9️⃣"],
-          ["kwejk.pl", "https://kwejk.pl/", "kwejk.pl", "😃"],
-          ["joemonster.org", "https://joemonster.org/", "joemonster.org", "🤡"],
-          ["mistrzowie.org/", "https://mistrzowie.org/", "mistrzowie.org", "😎"]
-        ]
-      }
 
-    ];
-    
-    // LOCAL_FOLDERS_START
-    // LOCAL_FOLDERS_END
+folders.push({
+  title: "Facts",
+  emoji: "📰",
+  local: false,
+  links: [
+    ["Tagesschau", "https://tagesschau.de", "tagesschau.de", "📰"],
+    ["Sciencealert", "https://www.sciencealert.com/", "www.sciencealert.com/", "🗞️"],
+    ["Zeit", "https://zeit.de", "zeit.de", "☕"]
+  ]
+});
+
+
+folders.push({
+  title: "Facts",
+  emoji: "📰",
+  local: false,
+  links: [
+    ["Tagesschau", "https://tagesschau.de", "tagesschau.de", "📰"],
+    ["Sciencealert", "https://www.sciencealert.com/", "www.sciencealert.com/", "🗞️"],
+    ["Zeit", "https://zeit.de", "zeit.de", "☕"]
+  ]
+});
+
+
+folders.push({
+  title: "Google",
+  emoji: "◈",
+  local: false,
+  links: [
+    ["Calendar", "https://calendar.google.com", "calendar.google.com", "📅"],
+    ["Gmail", "https://mail.google.com", "mail.google.com", "✉️"],
+    ["Google Drive", "https://drive.google.com", "drive.google.com", "📁"],
+    ["GoogleAccounts", "https://accounts.google.com/AccountChooser", "accounts.google.com", "🤓"]
+  ]
+});
+
+
+folders.push({
+  title: "OFFICE",
+  emoji: "◌",
+  local: false,
+  links: [
+    ["Calendar", "https://calendar.google.com", "calendar.google.com", "📅"],
+    ["Gmail", "https://mail.google.com", "mail.google.com", "✉️"],
+    ["Google Drive", "https://drive.google.com", "drive.google.com", "📁"],
+    ["GoogleAccounts", "https://accounts.google.com/AccountChooser", "accounts.google.com", "🤓"]
+  ]
+});
+
+
+folders.push({
+  title: "Medien",
+  emoji: "▣",
+  local: false,
+  links: [
+    ["YouTube", "https://youtube.com", "youtube.com", "▶️"],
+    ["Netflix", "https://netflix.com", "netflix.com", "🎬"],
+    ["waiputv", "https://auth.waipu.tv/ui/login", "waipu.tv", "📺"],
+    ["Spotify", "https://open.spotify.com", "spotify.com", "🎧"]
+  ]
+});
+
+
+folders.push({
+  title: "Shopping",
+  emoji: "◇",
+  local: false,
+  links: [
+    ["Amazon", "https://amazon.de", "amazon.de", "📦"],
+    ["OTTO", "https://otto.de", "otto.de", "📦"],
+    ["eBay", "https://ebay.de", "ebay.de", "🛒"],
+    ["Idealo", "https://idealo.de", "idealo.de", "🏷️"],
+    ["Kleinanzeigen", "https://www.kleinanzeigen.de", "kleinanzeigen.de", "🔁"],
+    ["Decatlon", "https://www.decatlon.de", "decatlon.de", "🔁"]
+  ]
+});
+
+
+folders.push({
+  title: "JOE",
+  emoji: "🤡",
+  local: false,
+  links: [
+    ["9gag", "https://9gag.com/interest/news", "9gag.com", "9️⃣"],
+    ["kwejk.pl", "https://kwejk.pl/", "kwejk.pl", "😃"],
+    ["joemonster.org", "https://joemonster.org/", "joemonster.org", "🤡"],
+    ["mistrzowie.org/", "https://mistrzowie.org/", "mistrzowie.org", "😎"]
+  ]
+});
+
+// FOLDERS_END
 
        
 function setBackground() {
