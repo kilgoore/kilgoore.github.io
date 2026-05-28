@@ -193,6 +193,23 @@
       color: rgba(247, 247, 251, 0.58);
     }
 
+.search-engine {
+  border: 0;
+  outline: 0;
+  border-radius: 14px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
     .quick-actions {
       display: flex;
       justify-content: center;
@@ -403,7 +420,7 @@
         <div class="logo">⌁</div>
         <div>
             <h1>kilgoore's launchpad (Online)</h1>
-            <span id="last-update">2026.05.28 20:27</span>
+            <span id="last-update">2026.05.28 21:18</span>
         </div>
       </div>
 
@@ -427,14 +444,7 @@
 
   <input id="searchInput" type="search" autocomplete="off" placeholder="Suchen oder URL eingeben…" />
 </form>
-      <div class="quick-actions">
-        <button type="button" data-search="site:search.brave.com ">brave search</button> 
-        <button type="button" data-search="site:duckduckgo.com ">DuckDuckGo</button>
-        <button type="button" data-search="site:google.com ">Google</button>
-        <button type="button" data-search="site:youtube.com ">YouTube</button>
-        <button type="button" data-search="site:reddit.com ">Reddit</button>
-        <button type="button" data-search="">Web</button>
-      </div>
+
     </section>
 
     <div class="section-title">
@@ -650,8 +660,17 @@ function setBackground() {
         const target = value.startsWith("http") ? value : `https://${value}`;
         window.location.href = target;
       } else {
-        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
-      }
+     const engine = document.getElementById("searchEngine").value;
+
+const searchUrls = {
+  brave: `https://search.brave.com/search?q=${encodeURIComponent(value)}`,
+  google: `https://www.google.com/search?q=${encodeURIComponent(value)}`,
+  duckduckgo: `https://duckduckgo.com/?q=${encodeURIComponent(value)}`,
+  youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(value)}`,
+  reddit: `https://www.reddit.com/search/?q=${encodeURIComponent(value)}`
+};
+
+window.location.href = searchUrls[engine];      }
     });
 
     document.querySelectorAll(".quick-actions button").forEach(button => {
