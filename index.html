@@ -458,7 +458,7 @@
         <div>
             <h1>kilgoore's launchpad (Online)</h1>
             <div class="date">
-                <span id="last-update">2026.05.28 22:29</span>
+                <span id="last-update">2026.05.28 22:35</span>
             </div>
         </div>
       </div>
@@ -706,7 +706,7 @@ function setBackground() {
 
       if (isLikelyUrl(value)) {
         const target = value.startsWith("http") ? value : `https://${value}`;
-        window.location.href = target;
+        window.open(target, "_blank");
       } else {
         const engine = document.getElementById("searchEngine").value;
         const query = encodeURIComponent(value);
@@ -727,7 +727,7 @@ function setBackground() {
         };
 
         if (searchUrls[engine]) {
-          window.location.href = searchUrls[engine];
+          window.open(searchUrls[engine], "_blank");
           return;
         }
 
