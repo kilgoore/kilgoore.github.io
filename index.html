@@ -204,6 +204,19 @@
   cursor: pointer;
 }
 
+.search-engine option,
+.search-engine optgroup {
+  background: #10131d;
+  color: var(--text);
+}
+
+.search-hint {
+  margin-top: 10px;
+  color: rgba(247, 247, 251, 0.58);
+  font-size: 12px;
+  text-align: center;
+}
+
 
 
 
@@ -445,7 +458,7 @@
         <div>
             <h1>kilgoore's launchpad (Online)</h1>
             <div class="date">
-                <span id="last-update">2026.05.28 22:02</span>
+                <span id="last-update">2026.05.28 22:29</span>
             </div>
         </div>
       </div>
@@ -460,16 +473,25 @@
 <form class="search-box" id="searchForm">
   <span>⌕</span>
 
-  <select id="searchEngine" class="search-engine">
-    <option value="brave">Brave</option>
-    <option value="google">Google</option>
-    <option value="duckduckgo">DuckDuckGo</option>
-    <option value="youtube">YouTube</option>
-    <option value="reddit">Reddit</option>
+  <select id="searchEngine" class="search-engine" title="Suchziel auswählen">
+    <optgroup label="Web">
+      <option value="brave">Brave</option>
+      <option value="google">Google</option>
+      <option value="duckduckgo">DuckDuckGo</option>
+      <option value="youtube">YouTube</option>
+      <option value="reddit">Reddit</option>
+    </optgroup>
+    <optgroup label="AI">
+      <option value="perplexity">Perplexity</option>
+      <option value="chatgpt">ChatGPT</option>
+      <option value="claude">Claude</option>
+      <option value="gemini">Gemini</option>
+    </optgroup>
   </select>
 
   <input id="searchInput" type="search" autocomplete="off" placeholder="Suchen oder URL eingeben…" />
 </form>
+      <div class="search-hint">AI-Ziele öffnen die jeweilige App; deine Eingabe wird dabei in die Zwischenablage kopiert.</div>
 
     </section>
 
@@ -686,17 +708,34 @@ function setBackground() {
         const target = value.startsWith("http") ? value : `https://${value}`;
         window.location.href = target;
       } else {
-     const engine = document.getElementById("searchEngine").value;
+        const engine = document.getElementById("searchEngine").value;
+        const query = encodeURIComponent(value);
 
-const searchUrls = {
-  brave: `https://search.brave.com/search?q=${encodeURIComponent(value)}`,
-  google: `https://www.google.com/search?q=${encodeURIComponent(value)}`,
-  duckduckgo: `https://duckduckgo.com/?q=${encodeURIComponent(value)}`,
-  youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(value)}`,
-  reddit: `https://www.reddit.com/search/?q=${encodeURIComponent(value)}`
-};
+        const searchUrls = {
+          brave: `https://search.brave.com/search?q=${query}`,
+          google: `https://www.google.com/search?q=${query}`,
+          duckduckgo: `https://duckduckgo.com/?q=${query}`,
+          youtube: `https://www.youtube.com/results?search_query=${query}`,
+          reddit: `https://www.reddit.com/search/?q=${query}`,
+          perplexity: `https://www.perplexity.ai/search?q=${query}`
+        };
 
-window.location.href = searchUrls[engine];      }
+        const aiHomeUrls = {
+          chatgpt: "https://chatgpt.com/",
+          claude: "https://claude.ai/",
+          gemini: "https://gemini.google.com/"
+        };
+
+        if (searchUrls[engine]) {
+          window.location.href = searchUrls[engine];
+          return;
+        }
+
+        if (aiHomeUrls[engine]) {
+          navigator.clipboard?.writeText(value).catch(() => {});
+          window.location.href = aiHomeUrls[engine];
+        }
+      }
     });
 
     document.querySelectorAll(".quick-actions button").forEach(button => {
