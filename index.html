@@ -403,7 +403,7 @@
         <div class="logo">⌁</div>
         <div>
             <h1>kilgoore's launchpad (Online)</h1>
-            <span id="last-update">2026.05.28 18:24</span>
+            <span id="last-update">2026.05.28 20:27</span>
         </div>
       </div>
 
@@ -414,10 +414,19 @@
     </header>
 
     <section class="hero" aria-label="Suche">
-      <form class="search-box" id="searchForm">
-        <span>⌕</span>
-        <input id="searchInput" type="search" autocomplete="off" placeholder="Suchen oder URL eingeben…" />
-      </form>
+<form class="search-box" id="searchForm">
+  <span>⌕</span>
+
+  <select id="searchEngine" class="search-engine">
+    <option value="brave">Brave</option>
+    <option value="google">Google</option>
+    <option value="duckduckgo">DuckDuckGo</option>
+    <option value="youtube">YouTube</option>
+    <option value="reddit">Reddit</option>
+  </select>
+
+  <input id="searchInput" type="search" autocomplete="off" placeholder="Suchen oder URL eingeben…" />
+</form>
       <div class="quick-actions">
         <button type="button" data-search="site:search.brave.com ">brave search</button> 
         <button type="button" data-search="site:duckduckgo.com ">DuckDuckGo</button>
